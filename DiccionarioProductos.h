@@ -16,10 +16,9 @@ class DiccionarioProductos{
         void producto(long long int id);
         void precios(double min, double max);
 
-        int numElem(){
+        int getcontador(){
             return contador;
         }
-
 };
 
 #endif 
