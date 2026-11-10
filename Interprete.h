@@ -1,17 +1,13 @@
 #ifndef INTERPRETE_H
 #define INTERPRETE_H
 
-#include <string>
 #include "DiccionarioProductos.h"
-#include "Producto.h"
 
 using namespace std;
 
 class Interprete {
 private:
-    DiccionarioProductos dic;
-    Producto actual; 
-    int contador;    
+    DiccionarioProductos dic;   
 
     void procesar_insertar();
     void procesar_palabras();

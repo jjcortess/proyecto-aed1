@@ -11,14 +11,12 @@ class DiccionarioProductos{
         int contador;
     public:
         DiccionarioProductos();
+        int numElem();
         void insertar(Producto nuevo);
         void eliminar(long long int id);
         void producto(long long int id);
         void precios(double min, double max);
-
-        int getcontador(){
-            return contador;
-        }
+  
 };
 
 #endif 

@@ -17,6 +17,8 @@ class Producto{
         
         long long int getidentificador();
         double getprecio();
+        string getnombre();
+        string getdescripcion();
 
         void leer(void);
         void mostrar(void);

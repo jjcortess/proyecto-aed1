@@ -18,6 +18,14 @@ double Producto::getprecio(){
     return precio;
 }
 
+string Producto::getnombre(){
+    return nombre;
+}
+
+string Producto::getdescripcion() {
+    return descripcion;
+}
+
 void Producto::leer(){
     cin >> identificador;
     cin.ignore();

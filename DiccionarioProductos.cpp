@@ -6,8 +6,31 @@
 #include "Producto.h"
 
 
+string minusculas(string palabra) {
+    int longi = palabra.length();
+    for(int i = 0; i<longi; i++) { 
+        unsigned char car = palabra[i];
+        if (car>= 'A' && car<='Z'){
+            palabra[i] += 32;
+        } else if (car == 0xC3 && i + 1 < longi) { 
+            unsigned char siguiente = palabra[i+1];
+            if(siguiente == 0x81 || siguiente == 0x89 || siguiente == 0x8D || siguiente == 0x93 || siguiente == 0x9A || siguiente == 0x91 || siguiente == 0x9C){
+                palabra[i+1] += 32;
+            }
+            i++;
+        }
+    }
+    return palabra;
+
+}
+
+
 DiccionarioProductos::DiccionarioProductos(){
     contador = 0;
+}
+
+int DiccionarioProductos::numElem() {
+    return contador;
 }
 
 
@@ -20,11 +43,8 @@ void DiccionarioProductos::insertar(Producto nuevo){
         lista.insert(it, nuevo);
         contador++;
     }
-
     
 }
-
-
 
 
 void DiccionarioProductos::eliminar(long long int id){

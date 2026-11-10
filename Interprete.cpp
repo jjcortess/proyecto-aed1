@@ -11,14 +11,14 @@ void Interprete::procesar_insertar() {
     Producto nuevo;
     nuevo.leer();
     dic.insertar(nuevo);
-    cout << dic.getcontador() << " productos\n";
+    cout << dic.numElem() << " productos\n";
 }
 
 void Interprete::procesar_eliminar() {
     long long int id;
     cin >> id;
     dic.eliminar(id);
-    cout << dic.getcontador() << " productos\n";
+    cout << dic.numElem() << " productos\n";
 }
 
 
