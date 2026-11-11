@@ -25,6 +25,10 @@ private:
     void reestructurar();
 public:
     TablaHash();
+    ~TablaHash();
+    void insertar(string palabra, Producto *nuevo);
+    void consultar (string nombre);
+    int numElem (void) { return nElem; }
 };
 
 #endif

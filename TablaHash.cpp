@@ -27,12 +27,12 @@ void TablaHash::reestructurar(){
 
     for (int i=0; i<B_antiguo; i++){
         list<Par>::iterator it = T_antigua[i].begin();
-        for (it; it != T_antigua[i].begin(); it++){
+        for (it; it != T_antigua[i].end(); it++){
             unsigned int nuevo_hash = fdispersion(it->palabra);
-            //T[nuevo_hash]
+            T[nuevo_hash].push_back(*it);
         }
-
     }
+    delete[] T_antigua;
 }
 
 unsigned int TablaHash::fdispersion(string palabra){
@@ -44,3 +44,43 @@ unsigned int TablaHash::fdispersion(string palabra){
 
     return hash%B;
 }
+
+void TablaHash::insertar(string palabra, Producto *nuevo){
+    unsigned int hash = fdispersion(palabra); 
+    for (list<Par>::iterator it = T[hash].begin(); it != T[hash].end(); it++){
+        if (it->palabra == palabra){
+
+            
+            for(list<Producto*>::iterator itProds = it->l.begin(); itProds != it->l.end(); itProds++){
+                if(*itProds == nuevo) return;
+            }
+
+            it->l.push_back(nuevo);
+            return;
+
+        }
+    }
+
+    // si no está ya la palabra:
+
+    Par nuevoPar;
+    nuevoPar.palabra = palabra;
+    nuevoPar.l.push_back(nuevo);
+
+    T[hash].push_back(nuevoPar);
+    nElem++;
+
+
+    if (nElem > B-5) reestructurar();
+
+}
+
+
+void consultar (string nombre){
+
+
+
+}
+
+
+
