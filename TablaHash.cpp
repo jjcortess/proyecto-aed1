@@ -23,8 +23,8 @@ void TablaHash::reestructurar(){
     T = new list<Par>[B];
 
     for (int i=0; i<B_antiguo; i++){
-        list<Par>::iterator it = T_antigua[i].begin();
-        for (it; it != T_antigua[i].end(); it++){
+        
+        for (list<Par>::iterator it = T_antigua[i].begin(); it != T_antigua[i].end(); it++){
             unsigned int nuevo_hash = fdispersion(it->palabra);
             T[nuevo_hash].push_back(*it);
         }
