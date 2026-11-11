@@ -14,15 +14,12 @@ TablaHash::~TablaHash() {
     delete[] T;
 }
 
-int siguientePrimo(int p){
-    return p;
-}
 
 void TablaHash::reestructurar(){
     int B_antiguo = B;
     list<Par>* T_antigua = T;
 
-    B = B*2 + 1; //un impar o un primo yo q se
+    B = B*2 + 1; 
     T = new list<Par>[B];
 
     for (int i=0; i<B_antiguo; i++){
@@ -76,10 +73,21 @@ void TablaHash::insertar(string palabra, Producto *nuevo){
 }
 
 
-void consultar (string nombre){
-
-
-
+void TablaHash::consultar (string nombre){
+    unsigned int hash = fdispersion(nombre); 
+    for (list<Par>::iterator it = T[hash].begin(); it != T[hash].end(); it++){
+        if (it->palabra == nombre){
+            int i = 0;
+            for(list<Producto*>::iterator itProds = it->l.begin(); itProds != it->l.end(); itProds++){
+                i++;
+                cout << i << ". " ;
+                (*itProds)->mostrar();
+            } 
+            cout << "Total: " << i << " productos\n";
+            return;
+        }
+    }
+    cout << "Total: 0 productos\n";
 }
 
 

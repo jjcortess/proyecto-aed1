@@ -35,13 +35,24 @@ int DiccionarioProductos::numElem() {
 
 
 void DiccionarioProductos::insertar(Producto nuevo){
+    
     list<Producto>::iterator it = lista.begin();
     while (it!=lista.end() && it->getidentificador()<nuevo.getidentificador()){
         it++;
     }
     if (it==lista.end() || it->getidentificador()!=nuevo.getidentificador()){
-        lista.insert(it, nuevo);
+        list<Producto>::iterator it_nuevo = lista.insert(it, nuevo);
         contador++;
+
+
+        string linea = nuevo.getnombre() + " " + nuevo.getdescripcion();
+        istringstream iss(linea);
+        string palabra;
+
+        
+        while(iss >> palabra) {
+            tabla.insertar(minusculas(palabra), &(*it_nuevo));
+        }
     }
     
 }
@@ -96,3 +107,7 @@ void DiccionarioProductos::precios(double min, double max) {
     cout << "Total: " << encontrados << " productos\n";
 }
 
+void DiccionarioProductos::palabras(string palabra){
+    cout << "palabras " << palabra << '\n';
+    tabla.consultar(minusculas(palabra));
+}

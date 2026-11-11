@@ -2,7 +2,7 @@
 #define TABLAHASH_H
 
 #include <string>
-#include "DiccionarioProductos.h"
+#include <list>
 #include "Producto.h"
 
 using namespace std;

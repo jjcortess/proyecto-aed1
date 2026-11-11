@@ -35,6 +35,12 @@ void Interprete::procesar_precios() {
     dic.precios(MIN,MAX);
 }
 
+void Interprete::procesar_palabras(){
+    string palabra;
+    cin >> palabra;
+    dic.palabras(palabra);
+
+}
 
 void Interprete::procesar_comando(string comando) {
     if(comando == "insertar") { 
@@ -49,6 +55,9 @@ void Interprete::procesar_comando(string comando) {
     else if(comando == "producto") { 
         procesar_productos(); 
     }
+    else if(comando == "palabras") { 
+        procesar_palabras(); 
+    }
 }
 
 void Interprete::ejecutar() {
@@ -57,3 +66,4 @@ void Interprete::ejecutar() {
         procesar_comando(comando);
     }
 }
+
