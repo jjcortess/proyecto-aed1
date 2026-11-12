@@ -4,6 +4,10 @@
 #include <sstream>
 #include <list>
 
+bool compararid(Producto* a, Producto* b) {
+    return a->getidentificador() < b->getidentificador();
+}
+
 TablaHash::TablaHash() {
     B = 101;
     nElem = 0;
@@ -58,7 +62,6 @@ void TablaHash::insertar(string palabra, Producto *nuevo){
         }
     }
 
-    // si no está ya la palabra:
 
     Par nuevoPar;
     nuevoPar.palabra = palabra;
@@ -77,6 +80,9 @@ void TablaHash::consultar (string nombre){
     unsigned int hash = fdispersion(nombre); 
     for (list<Par>::iterator it = T[hash].begin(); it != T[hash].end(); it++){
         if (it->palabra == nombre){
+
+            it->l.sort(compararid);
+
             int i = 0;
             for(list<Producto*>::iterator itProds = it->l.begin(); itProds != it->l.end(); itProds++){
                 i++;
