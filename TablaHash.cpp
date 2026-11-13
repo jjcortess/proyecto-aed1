@@ -71,9 +71,9 @@ void TablaHash::insertar(string palabra, Producto *nuevo){
     nElem++;
 
 
-    if (nElem > B-5) reestructurar();
+    if (nElem > 2*B) reestructurar();
 
-}
+} 
 
 
 void TablaHash::consultar (string nombre){
